@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ArtService {
 
-  private apiUrl = `https://api.artic.edu/api/v1/artworks/129884`
+  private apiUrl = `https://api.artic.edu/api/v1/artworks`
 
   constructor(private http: HttpClient) { }
 
@@ -18,6 +18,6 @@ export class ArtService {
   }
 
   getArt():Observable<Object>{
-    return this.http.get<Object>(this.apiUrl)
+    return this.http.get<Object>(`${this.apiUrl}/6010`)
   }
 }

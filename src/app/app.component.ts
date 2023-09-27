@@ -10,20 +10,34 @@ import { Observable } from 'rxjs';
 export class AppComponent {
   title = 'dailyartapp';
 
-  art: Object = {};
+  art;
 
 
   constructor(private artService: ArtService){}
 
   onGetArts():void{
-    this.art = this.artService.getArts()
-    console.log(this.art)
+    this.artService.getArts().subscribe({
+      next: (response) => {
+        this.art = response;
+        console.log(this.art.data);
+      },
+      error: (error) =>  console.log(error),
+      complete: ()=> console.log('Done geting Arts')
+      
+    })
     
   }
 
   onGetArt():void{
-    this.art = this.artService.getArt()
-    console.log(this.art)
+    this.artService.getArt().subscribe({
+      next: (response) => {
+        this.art = response;
+        console.log(this.art.data);
+      },
+      error: (error) =>  console.log(error),
+      complete: ()=> console.log('Done geting Art')
+      
+    })
     
   }
 }
