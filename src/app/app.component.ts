@@ -19,7 +19,8 @@ export class AppComponent {
     this.artService.getArts().subscribe({
       next: (response) => {
         this.art = response;
-        console.log(this.art.data);
+        console.log(response)
+        console.log(this.art.data); 
       },
       error: (error) =>  console.log(error),
       complete: ()=> console.log('Done geting Arts')
@@ -32,6 +33,7 @@ export class AppComponent {
     this.artService.getArt().subscribe({
       next: (response) => {
         this.art = response;
+        console.log(response)
         console.log(this.art.data);
       },
       error: (error) =>  console.log(error),
