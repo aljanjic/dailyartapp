@@ -1,0 +1,28 @@
+.side {
+    background-color: black;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%; 
+    height: 100vh;
+    margin: 0 auto; /* This centers the container horizontally */
+    background-color: #60001e; /* Brown color */
+}
+
+.get-art-btn {
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.get-art-btn:hover {
+    background-color: #555;
+}

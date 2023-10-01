@@ -11,36 +11,4 @@ import { Art } from './interface/art';
 export class AppComponent {
   title = 'dailyartapp';
 
-  art: Art;
-
-
-  constructor(private artService: ArtService){}
-
-  onGetArt():void{
-    this.artService.getArt().subscribe({
-      next: (response) => {
-        this.art = response;
-        console.log('Response: ',response)
-        console.log('Assigned value: ', this.art.data); 
-      },
-      error: (error) =>  console.log(error),
-      complete: ()=> console.log('Done geting Arts')
-      
-    })
-    
-  }
-
-  onGetArtItem():void{
-    this.artService.getArtItem().subscribe({
-      next: (response) => {
-        this.art = response;
-        console.log('Response: ', response)
-        console.log('Assigned value: ',this.art.data);
-      },
-      error: (error) =>  console.log(error),
-      complete: ()=> console.log('Done geting Art')
-      
-    })
-    
-  }
 }

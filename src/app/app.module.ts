@@ -6,10 +6,12 @@ import { HttpClientModule } from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ArtService } from './service/art.service';
+import { GetArtComponent } from './get-art/get-art.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    GetArtComponent
   ],
   imports: [
     BrowserModule,
