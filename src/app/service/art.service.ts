@@ -8,7 +8,7 @@ import { Art } from '../interface/art';
 })
 export class ArtService {
 
-  private apiUrl = `https://api.artic.edu/api/v1/artworks`
+  private apiUrl = `https://api.artic.edu/api/v1/artworks?fields=id,title,image_id,description`
 
   constructor(private http: HttpClient) { }
 

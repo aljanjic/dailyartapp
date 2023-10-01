@@ -20,7 +20,7 @@ export class GetArtComponent {
       next: (response) => {
         this.art = response;
         console.log('Response: ',response)
-        console.log('Assigned value: ', this.art.data); 
+        console.log('Assigned value: ', this.art); 
       },
       error: (error) =>  console.log(error),
       complete: ()=> console.log('Done geting Arts')
