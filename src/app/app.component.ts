@@ -15,12 +15,12 @@ export class AppComponent {
 
   constructor(private artService: ArtService){}
 
-  onGetArts():void{
+  onGetArt():void{
     this.artService.getArts().subscribe({
       next: (response) => {
         this.art = response;
         console.log(response)
-        console.log(this.art.data); 
+        // console.log(this.art.data); 
       },
       error: (error) =>  console.log(error),
       complete: ()=> console.log('Done geting Arts')
@@ -29,12 +29,12 @@ export class AppComponent {
     
   }
 
-  onGetArt():void{
+  onGetArtItem():void{
     this.artService.getArt().subscribe({
       next: (response) => {
         this.art = response;
         console.log(response)
-        console.log(this.art.data);
+        // console.log(this.art.data);
       },
       error: (error) =>  console.log(error),
       complete: ()=> console.log('Done geting Art')
