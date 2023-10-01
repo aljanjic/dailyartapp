@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { filter } from 'rxjs/operators'
 import { Art } from '../interface/art';
+import { Data } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -14,11 +16,11 @@ export class ArtService {
 
 
 
-  getArt():Observable<Art>{
-    return this.http.get<Art>(this.apiUrl)
+  getArt():Observable<Data>{
+    return this.http.get<Data>(this.apiUrl)
   }
 
-  getArtItem():Observable<Art>{
-    return this.http.get<Art>(`${this.apiUrl}/6010`)
-  }
+  // getArtItem():Observable<Art>{
+  //   return this.http.get<Art>(`${this.apiUrl}/6010`)
+  // }
 }

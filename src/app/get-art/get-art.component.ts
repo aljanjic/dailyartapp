@@ -18,7 +18,7 @@ export class GetArtComponent {
   onGetArt():void{
     this.artService.getArt().subscribe({
       next: (response) => {
-        this.art = response;
+        this.art = response['data'].filter(value => value.description !== null);
         console.log('Response: ',response)
         console.log('Assigned value: ', this.art); 
       },
@@ -29,18 +29,17 @@ export class GetArtComponent {
     
   }
 
-  onGetArtItem():void{
-    this.artService.getArtItem().subscribe({
-      next: (response) => {
-        this.art = response;
-        console.log('Response: ', response)
-        console.log('Assigned value: ',this.art.data);
-      },
-      error: (error) =>  console.log(error),
-      complete: ()=> console.log('Done geting Art')
+  // onGetArtItem():void{
+  //   this.artService.getArtItem().subscribe({
+  //     next: (response) => {
+  //       this.art = response;
+  //       console.log('Response: ', response)
+  //       console.log('Assigned value: ',this.art.data);
+  //     },
+  //     error: (error) =>  console.log(error),
+  //     complete: ()=> console.log('Done geting Art')
       
-    })
-    
-  }
+  //   })
+  // }
 
 }
