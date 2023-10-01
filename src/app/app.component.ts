@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ArtService } from './service/art.service';
 import { Observable } from 'rxjs';
+import { Art } from './interface/art';
 
 @Component({
   selector: 'app-root',
@@ -10,17 +11,17 @@ import { Observable } from 'rxjs';
 export class AppComponent {
   title = 'dailyartapp';
 
-  art;
+  art: Art;
 
 
   constructor(private artService: ArtService){}
 
   onGetArt():void{
-    this.artService.getArts().subscribe({
+    this.artService.getArt().subscribe({
       next: (response) => {
         this.art = response;
-        console.log(response)
-        // console.log(this.art.data); 
+        console.log('Response: ',response)
+        console.log('Assigned value: ', this.art.data); 
       },
       error: (error) =>  console.log(error),
       complete: ()=> console.log('Done geting Arts')
@@ -30,11 +31,11 @@ export class AppComponent {
   }
 
   onGetArtItem():void{
-    this.artService.getArt().subscribe({
+    this.artService.getArtItem().subscribe({
       next: (response) => {
         this.art = response;
-        console.log(response)
-        // console.log(this.art.data);
+        console.log('Response: ', response)
+        console.log('Assigned value: ',this.art.data);
       },
       error: (error) =>  console.log(error),
       complete: ()=> console.log('Done geting Art')

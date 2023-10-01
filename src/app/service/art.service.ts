@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Art } from '../interface/art';
 
 @Injectable({
   providedIn: 'root'
@@ -13,11 +14,11 @@ export class ArtService {
 
 
 
-  getArts():Observable<Object>{
-    return this.http.get<Object>(this.apiUrl)
+  getArt():Observable<Art>{
+    return this.http.get<Art>(this.apiUrl)
   }
 
-  getArt():Observable<Object>{
-    return this.http.get<Object>(`${this.apiUrl}/6010`)
+  getArtItem():Observable<Art>{
+    return this.http.get<Art>(`${this.apiUrl}/6010`)
   }
 }
