@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Art } from '../interface/art';
 import { ArtService } from '../service/art.service';
+import { Data } from '@angular/router';
 
 @Component({
   selector: 'app-get-art',
@@ -18,7 +19,7 @@ export class GetArtComponent {
   onGetArt():void{
     this.artService.getArt().subscribe({
       next: (response) => {
-        this.art = response['data'].filter(value => value.description !== null);
+        this.art = response['data'].filter((value:Data) => value['description'] !== null && value['image_id'] !== null);
         console.log('Response: ',response)
         console.log('Assigned value: ', this.art); 
       },
@@ -28,6 +29,7 @@ export class GetArtComponent {
     })
     
   }
+
 
   // onGetArtItem():void{
   //   this.artService.getArtItem().subscribe({

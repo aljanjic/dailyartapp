@@ -1,8 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { filter } from 'rxjs/operators'
-import { Art } from '../interface/art';
 import { Data } from '@angular/router';
 
 @Injectable({
