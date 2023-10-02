@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Data } from '@angular/router';
 import { Art } from '../interface/art';
 
@@ -9,7 +9,9 @@ import { Art } from '../interface/art';
 })
 export class ArtService {
 
-  art: Art;
+
+  artChanged = new Subject<Data>();
+  private art: Data;
 
   private apiUrl = `https://api.artic.edu/api/v1/artworks?fields=id,title,image_id,description`
 
@@ -17,8 +19,14 @@ export class ArtService {
 
 
 
-  getArt():Observable<Data>{
-    return this.http.get<Data>(this.apiUrl)
+
+  setArt(art:Data){
+    this.art = art;
+    this.artChanged.next({...this.art})
+
+    console.log('Assigned value: ', this.art); 
+
   }
+
 
 }
