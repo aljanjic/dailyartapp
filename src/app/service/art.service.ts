@@ -2,11 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Data } from '@angular/router';
+import { Art } from '../interface/art';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArtService {
+
+  art: Art;
 
   private apiUrl = `https://api.artic.edu/api/v1/artworks?fields=id,title,image_id,description`
 
@@ -18,7 +21,4 @@ export class ArtService {
     return this.http.get<Data>(this.apiUrl)
   }
 
-  // getArtItem():Observable<Art>{
-  //   return this.http.get<Art>(`${this.apiUrl}/6010`)
-  // }
 }

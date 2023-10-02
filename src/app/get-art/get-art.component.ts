@@ -10,9 +10,18 @@ import { Data } from '@angular/router';
 })
 export class GetArtComponent {
 
+constructor(private artService: ArtService){}
 
-  onGetArt(){
-    console.log('Button clicked')
+  onGetArt():void{
+    this.artService.getArt().subscribe({
+      next: (response) => {
+        this.artService.art = response['data'].filter((value:Data) => value['description'] !== null && value['image_id'] !== null);
+        console.log('Response: ',response)
+        console.log('Assigned value: ', this.artService.art); 
+      },
+      error: (error) =>  console.log(error),
+      complete: ()=> console.log('Done geting Arts')
+    })
   }
 
 }
