@@ -1,16 +1,4 @@
-.side {
-    background-color: black;
-}
 
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 80%; 
-    height: 100vh;
-    margin: 0 auto; /* This centers the container horizontally */
-    background-color: #60001e; /* Brown color */
-}
 
 .get-art-btn {
     padding: 10px 20px;
