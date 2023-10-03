@@ -1,5 +1,7 @@
 <div class="image-display">
     <img src="{{image}}" alt="Description of image">
-    <h2 class="selectedArt"> {{selectedArt['title']}} </h2>
-    <p class="image-description"> {{selectedArt['description']}} </p>
+    <h2 class="image-title"> {{selectedArt['title']}} <h5> {{selectedArt['artist_title']}} </h5></h2>
+    <div class="image-description" [innerHTML]="getSafeDescription()"></div>
+    <!-- <div class="image-description" [innerHTML]="selectedArt['description']"></div> -->
+    <!-- <p class="image-description"> {{selectedArt['description']}} </p> -->
 </div>

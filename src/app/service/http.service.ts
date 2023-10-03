@@ -13,7 +13,7 @@ export class HttpService {
 
   // https://api.artic.edu/api/v1/artworks/search?q=&fields=id,title,image_id,description
   // https://api.artic.edu/api/v1/artworks?fields=id,title,artist_display,date_display
-  private apiUrl = `https://api.artic.edu/api/v1/artworks/search?q=salvador&fields=id,title,image_id,description`
+  private apiUrl = `https://api.artic.edu/api/v1/artworks/search?q=salvador&page=1&limit=100&fields=id,artist_title,title,image_id,description`
 
   constructor(private http: HttpClient, private artService: ArtService) { }
 
