@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Data } from '@angular/router';
+import { Data } from '../interface/data';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { ArtService } from './art.service';

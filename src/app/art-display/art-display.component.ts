@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { ArtService } from '../service/art.service';
 import { Data } from '../interface/data';
 
 @Component({
@@ -6,9 +8,22 @@ import { Data } from '../interface/data';
   templateUrl: './art-display.component.html',
   styleUrls: ['./art-display.component.css']
 })
-export class ArtDisplayComponent {
+export class ArtDisplayComponent implements OnInit, OnDestroy{
 
-  private art: Data;
+  art: Data;
+  subscription: Subscription
 
+  constructor(private artService: ArtService){}
+
+  ngOnInit(){
+    this.subscription = this.artService.artChanged.subscribe({
+      next: response => this.art = response
+    }
+    )
+  }
+
+  ngOnDestroy(){
+
+  }
 
 }
