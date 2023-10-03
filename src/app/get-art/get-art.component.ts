@@ -14,7 +14,12 @@ export class GetArtComponent {
 constructor( private httpService: HttpService){}
 
   onGetArt():void{
-    this.httpService.fetchArt().subscribe()
+    // next, error and complete are not needed but are left for awareness
+    this.httpService.fetchArt().subscribe({
+      next: respnse => console.log('Response in subscribe trigger: ', respnse),
+      error: erroor => console.log('Ima error covjece'),
+      complete: () => console.log('Sve gotovo')
+    })
   }
 
 }

@@ -18,9 +18,8 @@ export class HttpService {
   fetchArt():Observable<Data>{
     return this.http.get<Data>(this.apiUrl).pipe(
       tap(art => {
-        console.log('Response: ', art)
-        const mutatedArt = art['data'].filter((value:Data) => value['description'] !== null && value['image_id'] !== null)
-        return this.artService.setArt(mutatedArt)
+        console.log('Response in http: ', art)
+        return this.artService.setArt(art)
       })
     )
   }

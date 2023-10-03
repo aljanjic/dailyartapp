@@ -13,11 +13,14 @@ export class ArtService {
   artChanged = new Subject<Data>();
   private art: Data;
 
-  
+
   setArt(art:Data){
-    this.art = art;
+    const mutatedArt = art['data'].filter((value:Data) => value['description'] !== null && value['image_id'] !== null)
+    this.art = mutatedArt;
     this.artChanged.next({...this.art})
-    console.log('Assigned value: ', this.art); 
+    // this.artChanged.error(console.log('Aloo bre ima problem'))
+
+    console.log('Assigned value in art service: ', this.art); 
   }
 
   gerArt(){
