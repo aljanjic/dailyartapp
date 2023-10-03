@@ -2,7 +2,17 @@
 
 <div class="side">
     <div class="container">
-        <app-get-art></app-get-art>
+        <div>
+            <app-get-art></app-get-art>
+        </div>
+
+        <div *ngIf="displayArt">
+            <app-art-display></app-art-display>
+        </div>
+
     </div>
 </div>
+
+
+
 <router-outlet></router-outlet>

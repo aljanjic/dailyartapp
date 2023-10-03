@@ -7,11 +7,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ArtService } from './service/art.service';
 import { GetArtComponent } from './get-art/get-art.component';
+import { ArtDisplayComponent } from './art-display/art-display.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    GetArtComponent
+    GetArtComponent,
+    ArtDisplayComponent
   ],
   imports: [
     BrowserModule,

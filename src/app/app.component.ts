@@ -12,6 +12,8 @@ import { Data } from './interface/data';
 export class AppComponent {
   title = 'dailyartapp';
 
+  displayArt = false;
+
 
   constructor(private artService: ArtService){}
 
