@@ -12,7 +12,7 @@ import { Data } from './interface/data';
 export class AppComponent {
   title = 'dailyartapp';
 
-  displayArt = false;
+  displayArt = true;
 
 
   constructor(private artService: ArtService){}

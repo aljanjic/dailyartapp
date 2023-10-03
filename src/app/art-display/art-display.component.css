@@ -1,0 +1,28 @@
+.image-display {
+    text-align: center; /* Aligns text elements in the center */
+    width:  800px; /* Adjust this based on your preferred width */
+    margin: 10px auto 50px auto; /* This centers the container horizontally */
+    background-color: #f5f5f5; /* Light grey background for the container */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px; /* Space inside the container */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* A subtle shadow for depth */
+}
+
+.image-display img {
+    max-width: 100%; /* Makes sure the image doesn't overflow the container */
+    height: auto; /* Maintains aspect ratio */
+    border-radius: 8px; /* Rounded corners for the image */
+    margin-bottom: 15px; /* Space between the image and the title */
+}
+
+.image-title {
+    font-size: 24px; /* Font size of the title */
+    color: #333; /* Dark grey color for the title */
+    margin-bottom: 10px; /* Space between the title and the description */
+}
+
+.image-description {
+    font-size: 16px; /* Font size of the description */
+    color: #666; /* Grey color for the description */
+    line-height: 1.5; /* Space between lines for readability */
+}
