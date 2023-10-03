@@ -9,13 +9,14 @@ import { Data } from '../interface/data';
   styleUrls: ['./art-display.component.css']
 })
 export class ArtDisplayComponent implements OnInit, OnDestroy{
-
-  art: Data;
+  
   subscription: Subscription
-
+  
+  art: Data;
   selectedArt: Data;
+  image: string;
+  randomArt: number = Math.floor((Math.random() * 4) )
 
-  image;
   constructor(private artService: ArtService){}
 
   ngOnInit(){
@@ -23,7 +24,8 @@ export class ArtDisplayComponent implements OnInit, OnDestroy{
       next: response => {
       this.art = response;
       console.log('Data in the art-display: ', this.art);
-      this.selectedArt = this.art[4];
+      console.log('Random number: ', this.randomArt)
+      this.selectedArt = this.art[this.randomArt];
       console.log('Selected Art: ', this.selectedArt);
       this.image = `https://www.artic.edu/iiif/2/${this.selectedArt['image_id']}/full/350,/0/default.jpg`
       console.log('Image source: ', this.image)
