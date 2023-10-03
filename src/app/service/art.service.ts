@@ -13,19 +13,15 @@ export class ArtService {
   artChanged = new Subject<Data>();
   private art: Data;
 
-  private apiUrl = `https://api.artic.edu/api/v1/artworks?fields=id,title,image_id,description`
-
-  constructor(private http: HttpClient) { }
-
-
-
-
+  
   setArt(art:Data){
     this.art = art;
     this.artChanged.next({...this.art})
-
     console.log('Assigned value: ', this.art); 
+  }
 
+  gerArt(){
+    return {...this.art}
   }
 
 

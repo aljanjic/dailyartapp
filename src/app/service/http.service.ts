@@ -9,7 +9,7 @@ import { ArtService } from './art.service';
 @Injectable({
   providedIn: 'root'
 })
-export class DataStorageService {
+export class HttpService {
 
   private apiUrl = `https://api.artic.edu/api/v1/artworks?fields=id,title,image_id,description`
 

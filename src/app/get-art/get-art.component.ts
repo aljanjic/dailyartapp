@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Art } from '../interface/art';
 import { ArtService } from '../service/art.service';
 import { Data } from '@angular/router';
-import { DataStorageService } from '../service/data-storage.service';
+import { HttpService } from '../service/http.service';
 
 @Component({
   selector: 'app-get-art',
@@ -11,10 +11,10 @@ import { DataStorageService } from '../service/data-storage.service';
 })
 export class GetArtComponent {
 
-constructor( private dataStorageService: DataStorageService){}
+constructor( private httpService: HttpService){}
 
   onGetArt():void{
-    this.dataStorageService.fetchArt().subscribe()
+    this.httpService.fetchArt().subscribe()
   }
 
 }
