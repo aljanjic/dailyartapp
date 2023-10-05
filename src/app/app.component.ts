@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ArtService } from './service/art.service';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Art } from './interface/art';
 import { Data } from './interface/data';
 
@@ -12,11 +12,28 @@ import { Data } from './interface/data';
 export class AppComponent {
   title = 'dailyartapp';
 
-  displayArt = true;
+  subscription: Subscription;
+
+
+
+  displayArt = false;
 
 
   constructor(private artService: ArtService){}
 
+
+  ngOnInit(){
+
+    this.subscription = this.artService.artChanged.subscribe({
+      next: response => this.displayArt = true
+    })
+
+  }
+
+
+  ngOnDestory(){
+    this.subscription.unsubscribe();
+  }
 
 
 }

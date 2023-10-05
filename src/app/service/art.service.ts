@@ -23,7 +23,7 @@ export class ArtService {
     console.log('Assigned value in art service: ', this.art); 
   }
 
-  gerArt(){
+  getArt(){
     return {...this.art}
   }
 
