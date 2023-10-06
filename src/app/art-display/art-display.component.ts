@@ -22,45 +22,12 @@ export class ArtDisplayComponent implements OnInit, OnDestroy{
 
   
   ngOnInit() {
-    // this.subscription = this.artService.artChanged.subscribe({
-    //   next: response => {
-    //     this.art = response;
-    //     console.log('Data length for random number: ', Object.keys(this.art).length)
-    //     this.randomArt = Math.floor((Math.random() * Object.keys(this.art).length))
-    //     console.log('Data in the art-display: ', this.art);
-    //     console.log('Random number: ', this.randomArt)
-    //     this.selectedArt = this.art[this.randomArt];
-    //     console.log('Selected Art: ', this.selectedArt);
-    //     this.image = `https://www.artic.edu/iiif/2/${this.selectedArt['image_id']}/full/350,/0/default.jpg`
-    //     console.log('Image source: ', this.image)
-
-    //   }
-    // })
-
-
-    // You will clean this up, either in a function or by reorganising the code and data flow after creating transition when displaying
+    this.displayingArt();
     this.subscription = this.artService.artChanged.subscribe({
       next: () => {
-        this.art = this.artService.getArt()
-        console.log('Data length for random number: ', Object.keys(this.art).length)
-        this.randomArt = Math.floor((Math.random() * Object.keys(this.art).length))
-        console.log('Data in the art-display: ', this.art);
-        console.log('Random number: ', this.randomArt)
-        this.selectedArt = this.art[this.randomArt];
-        console.log('Selected Art: ', this.selectedArt);
-        this.image = `https://www.artic.edu/iiif/2/${this.selectedArt['image_id']}/full/350,/0/default.jpg`
-        console.log('Image source: ', this.image)
+        this.displayingArt();
       }
     })
-    this.art = this.artService.getArt()
-    console.log('Data length for random number: ', Object.keys(this.art).length)
-    this.randomArt = Math.floor((Math.random() * Object.keys(this.art).length))
-    console.log('Data in the art-display: ', this.art);
-    console.log('Random number: ', this.randomArt)
-    this.selectedArt = this.art[this.randomArt];
-    console.log('Selected Art: ', this.selectedArt);
-    this.image = `https://www.artic.edu/iiif/2/${this.selectedArt['image_id']}/full/350,/0/default.jpg`
-    console.log('Image source: ', this.image)
   }
 
   
@@ -68,6 +35,13 @@ export class ArtDisplayComponent implements OnInit, OnDestroy{
     this.subscription.unsubscribe();
   }
 
+
+  displayingArt(){
+    this.art = this.artService.getArt()
+    this.randomArt = Math.floor((Math.random() * Object.keys(this.art).length))
+    this.selectedArt = this.art[this.randomArt];
+    this.image = `https://www.artic.edu/iiif/2/${this.selectedArt['image_id']}/full/350,/0/default.jpg`
+  }
   
   getSafeDescription(): SafeHtml {
     const cleanedHtml = this.removeHrefsFromHtml(this.selectedArt['description']);
