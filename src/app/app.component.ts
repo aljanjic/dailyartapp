@@ -17,11 +17,14 @@ import {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   animations: [
-    trigger('fadeIn', [
+    trigger('fadeInOut', [
       transition(':enter', [
         style({ opacity: 0 }),
         animate('500ms', style({ opacity: 1 })),
       ]),
+      transition(':leave', [
+        animate('500ms', style({ opacity: 0 })),
+      ])
     ])
   ]
 })
@@ -34,15 +37,22 @@ export class AppComponent {
 
   displayArt: boolean = false;
 
+  onArtFetched() {
+    this.displayArt = false;
+    setTimeout(() => {
+      this.displayArt = true;
+    }, 500);
+  }
+
 
   constructor(private artService: ArtService){}
 
 
   ngOnInit(){
 
-    this.subscription = this.artService.artChanged.subscribe({
-      next: response => this.displayArt = true
-    })
+    // this.subscription = this.artService.artChanged.subscribe({
+    //   next: response => this.displayArt = true
+    // })
 
   }
 

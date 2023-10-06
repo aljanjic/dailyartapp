@@ -3,10 +3,10 @@
 <div class="side">
     <div class="container">
         <div>
-            <app-get-art></app-get-art>
+            <app-get-art (artFetched)="onArtFetched()"></app-get-art>
         </div>
 
-        <div *ngIf="displayArt" [@fadeIn]>
+        <div *ngIf="displayArt" [@fadeInOut]>
             <app-art-display></app-art-display>
         </div>
 
