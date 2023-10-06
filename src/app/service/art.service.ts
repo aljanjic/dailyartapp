@@ -19,8 +19,6 @@ export class ArtService {
     this.art = mutatedArt;
     this.artChanged.next({...this.art})
     // this.artChanged.error(console.log('Aloo bre ima problem'))
-
-    console.log('Assigned value in art service: ', this.art); 
   }
 
   getArt(){

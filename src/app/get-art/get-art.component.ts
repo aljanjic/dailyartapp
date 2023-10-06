@@ -16,22 +16,10 @@ export class GetArtComponent {
 constructor( private httpService: HttpService){}
 
   onGetArt():void{
-    // next, error and complete are not needed but are left for awareness
+    // next, error and complete are not needed but they would be used here
     this.httpService.fetchArt().subscribe({
-      next: respnse => this.artFetched.emit(),
-      error: erroor => console.log('Ima error covjece'),
-      complete: () => console.log('Sve gotovo')
+      next: respnse => this.artFetched.emit()
     })
   }
 
 }
-
-
-
-// next: (response) => {
-//   this.art = response['data'].filter((value:Data) => value['description'] !== null && value['image_id'] !== null);
-//   console.log('Response: ',response)
-//   console.log('Assigned value: ', this.art); 
-// },
-// error: (error) =>  console.log(error),
-// complete: ()=> console.log('Done geting Arts')

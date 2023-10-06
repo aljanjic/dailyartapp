@@ -37,29 +37,14 @@ export class AppComponent {
 
   displayArt: boolean = false;
 
+
+  constructor(private artService: ArtService){}
+
+
   onArtFetched() {
     this.displayArt = false;
     setTimeout(() => {
       this.displayArt = true;
     }, 500);
   }
-
-
-  constructor(private artService: ArtService){}
-
-
-  ngOnInit(){
-
-    // this.subscription = this.artService.artChanged.subscribe({
-    //   next: response => this.displayArt = true
-    // })
-
-  }
-
-
-  ngOnDestory(){
-    this.subscription.unsubscribe();
-  }
-
-
 }

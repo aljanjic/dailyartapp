@@ -28,13 +28,10 @@ export class HttpService {
 
     this.randomPage = Math.floor((Math.random() * 10) )
 
-    console.log("Random Page: ", this.randomPage)
-
     this.apiUrl = `https://api.artic.edu/api/v1/artworks/search?q=&page=${this.randomPage}&limit=100&fields=id,artist_title,title,image_id,description`
 
     return this.http.get<Data>(this.apiUrl).pipe(
       tap(art => {
-        console.log('Response in http: ', art)
         return this.artService.setArt(art)
       })
     )
