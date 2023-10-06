@@ -1,5 +1,9 @@
-<div class="image-display">
-    <img src="{{image}}" alt="Description of image">
+<div style="display: none;">
+    <img src="{{image}}" (load)="onImageLoad()">
+</div>
+
+<div *ngIf="imageLoaded" class="image-display">
+    <img src="{{image}}" alt="Description of image" (load)="onImageLoad()">
     <h2 class="image-title"> {{selectedArt['title']}} <h5> {{selectedArt['artist_title']}} </h5></h2>
     <div class="image-description" [innerHTML]="getSafeDescription()"></div>
 </div>

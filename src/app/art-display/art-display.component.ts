@@ -17,6 +17,7 @@ export class ArtDisplayComponent implements OnInit, OnDestroy{
   selectedArt: Data;
   image: string;
   randomArt: number;
+  imageLoaded = false;
 
   constructor(private artService: ArtService, private sanitizer: DomSanitizer){}
 
@@ -36,11 +37,21 @@ export class ArtDisplayComponent implements OnInit, OnDestroy{
   }
 
 
+  onImageLoad() {
+    this.imageLoaded = true;
+    console.log('OnImageLoad: ', this.imageLoaded)
+  }
+
   displayingArt(){
+    // Theoreticaly we can outsource logic for randomArt and selectedArt to artService
+
+    console.log('Start of displaying Art: ', this.imageLoaded)
     this.art = this.artService.getArt()
     this.randomArt = Math.floor((Math.random() * Object.keys(this.art).length))
     this.selectedArt = this.art[this.randomArt];
     this.image = `https://www.artic.edu/iiif/2/${this.selectedArt['image_id']}/full/350,/0/default.jpg`
+    console.log('End of displaying Art: ', this.imageLoaded)
+
   }
   
   getSafeDescription(): SafeHtml {
