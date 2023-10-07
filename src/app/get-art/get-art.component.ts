@@ -1,7 +1,4 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { Art } from '../interface/art';
-import { ArtService } from '../service/art.service';
-import { Data } from '@angular/router';
 import { HttpService } from '../service/http.service';
 
 @Component({

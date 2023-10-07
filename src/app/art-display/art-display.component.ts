@@ -44,7 +44,6 @@ export class ArtDisplayComponent implements OnInit, OnDestroy{
 
   displayingArt(){
     // Theoreticaly we can outsource logic for randomArt and selectedArt to artService
-
     console.log('Start of displaying Art: ', this.imageLoaded)
     this.art = this.artService.getArt()
     this.randomArt = Math.floor((Math.random() * Object.keys(this.art).length))
@@ -69,7 +68,5 @@ export class ArtDisplayComponent implements OnInit, OnDestroy{
   
     return doc.body.innerHTML;
   }
-
-
 
 }
