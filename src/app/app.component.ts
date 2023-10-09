@@ -30,16 +30,15 @@ export class AppComponent {
   title = 'dailyartapp';
 
   subscription: Subscription;
-
-
-
   displayArt: boolean = false;
+  displaySearch: boolean = true;
 
 
   constructor(private artService: ArtService){}
 
 
   onArtFetched() {
+    this.displaySearch = false;
     this.displayArt = false;
     setTimeout(() => {
       this.displayArt = true;

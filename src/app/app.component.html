@@ -1,5 +1,10 @@
 <div class="side">
     <div class="container">
+
+        <div *ngIf="displaySearch" [@fadeInOut]>
+            <app-search-input></app-search-input>
+        </div>
+
         <div>
             <app-get-art (artFetched)="onArtFetched()"></app-get-art>
         </div>
