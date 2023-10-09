@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ArtService } from './service/art.service';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import {
   trigger,
   state,
