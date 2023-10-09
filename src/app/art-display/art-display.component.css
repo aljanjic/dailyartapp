@@ -26,3 +26,13 @@
     color: #666; /* Grey color for the description */
     line-height: 1.5; /* Space between lines for readability */
 }
+
+@media only screen and (max-width: 800px) {
+    .image-display {
+        width: 95%; /* Use a percentage width for smaller screens */
+    }
+
+    .image-description {
+        font-size: 14px; /* Reduce font size for readability on smaller screens */
+    }
+}
