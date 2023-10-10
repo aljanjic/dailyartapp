@@ -12,6 +12,12 @@ export class ArtService {
 
 
   setArt(art:Data){
+    const mutatedArt = art['data'].filter((value:Data) => value['image_id'] !== null)
+    this.art = mutatedArt;
+    this.artChanged.next({...this.art})
+  }
+
+  setFilteredArt(art:Data){
     const mutatedArt = art['data'].filter((value:Data) => value['description'] !== null && value['image_id'] !== null)
     this.art = mutatedArt;
     this.artChanged.next({...this.art})

@@ -55,6 +55,8 @@ export class ArtDisplayComponent implements OnInit, OnDestroy{
   
   getSafeDescription(): SafeHtml {
     const cleanedHtml = this.removeHrefsFromHtml(this.selectedArt['description']);
+    console.log('CleanedHTML: ',cleanedHtml)
+    if (cleanedHtml === 'null') return this.sanitizer.bypassSecurityTrustHtml('');
     return this.sanitizer.bypassSecurityTrustHtml(cleanedHtml);  }
   
   private removeHrefsFromHtml(htmlString: string): string {
