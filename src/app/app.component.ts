@@ -34,7 +34,7 @@ export class AppComponent {
   displaySearch: boolean = true;
 
 
-  constructor(private artService: ArtService){}
+  constructor(){}
 
 
   onArtFetched() {
