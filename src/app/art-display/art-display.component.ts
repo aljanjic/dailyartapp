@@ -3,6 +3,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Subscription } from 'rxjs';
 import { ArtService } from '../service/art.service';
 import { Data } from '../interface/data';
+import { HttpService } from '../service/http.service';
 
 @Component({
   selector: 'app-art-display',
@@ -17,9 +18,10 @@ export class ArtDisplayComponent implements OnInit, OnDestroy{
   selectedArt: Data;
   image: string;
   randomArt: number;
+  choosenArt: number;
   imageLoaded = false;
 
-  constructor(private artService: ArtService, private sanitizer: DomSanitizer){}
+  constructor(private artService: ArtService, private sanitizer: DomSanitizer, private httpService: HttpService){}
 
   
   ngOnInit() {
@@ -47,10 +49,25 @@ export class ArtDisplayComponent implements OnInit, OnDestroy{
 
   displayingArt(){
     // Theoreticaly we can outsource logic for randomArt and selectedArt to artService
-    this.art = this.artService.getArt()
-    this.randomArt = Math.floor((Math.random() * Object.keys(this.art).length))
-    this.selectedArt = this.art[this.randomArt];
-    this.image = `https://www.artic.edu/iiif/2/${this.selectedArt['image_id']}/full/350,/0/default.jpg`
+    if(this.httpService.searchTerm.length === 0) {
+     
+      this.art = this.artService.getArt()
+      this.randomArt = Math.floor((Math.random() * Object.keys(this.art).length))
+      this.selectedArt = this.art[this.randomArt];
+      this.image = `https://www.artic.edu/iiif/2/${this.selectedArt['image_id']}/full/350,/0/default.jpg`
+    } else { 
+      this.art = this.artService.getArt()
+      console.log('Art: ', this.art)
+      console.log('Befor selecting choosen number: ', this.choosenArt)
+
+      this.choosenArt = this.artService.setChoosenArt()
+      console.log('Choosen art number', this.choosenArt)
+      this.selectedArt = this.art[this.choosenArt];
+      console.log('Selected Art: ', this.selectedArt)
+      this.image = `https://www.artic.edu/iiif/2/${this.selectedArt['image_id']}/full/350,/0/default.jpg`
+      this.choosenArt--
+    }
+
 
   }
   

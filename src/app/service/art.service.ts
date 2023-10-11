@@ -10,6 +10,8 @@ export class ArtService {
   artChanged = new Subject<Data>();
   art: Data;
 
+  choosenArt: number;
+
 
   setArt(art:Data){
     const mutatedArt = art['data'].filter((value:Data) => value['image_id'] !== null)
@@ -27,5 +29,9 @@ export class ArtService {
     return {...this.art}
   }
 
+  setChoosenArt(){
+    if(this.choosenArt === undefined || this.choosenArt === Object.keys(this.art).length ) this.choosenArt = 0;
+    return this.choosenArt++;
+  }
 
 }
