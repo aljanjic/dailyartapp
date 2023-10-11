@@ -3,6 +3,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Subscription } from 'rxjs';
 import { ArtService } from '../service/art.service';
 import { Data } from '../interface/data';
+import { HttpService } from '../service/http.service';
 
 @Component({
   selector: 'app-art-display',
@@ -17,13 +18,17 @@ export class ArtDisplayComponent implements OnInit, OnDestroy{
   selectedArt: Data;
   image: string;
   randomArt: number;
+  choosenArt: number;
   imageLoaded = false;
 
-  constructor(private artService: ArtService, private sanitizer: DomSanitizer){}
+  constructor(private artService: ArtService, private sanitizer: DomSanitizer, private httpService: HttpService){}
 
   
   ngOnInit() {
+    console.log('Display art is created')
+
     this.displayingArt();
+    // Needed for random art
     this.subscription = this.artService.artChanged.subscribe({
       next: () => {
         this.displayingArt();
@@ -34,28 +39,37 @@ export class ArtDisplayComponent implements OnInit, OnDestroy{
   
   ngOnDestroy(){
     this.subscription.unsubscribe();
+    console.log('Display art is destroyed')
   }
 
 
   onImageLoad() {
     this.imageLoaded = true;
-    console.log('OnImageLoad: ', this.imageLoaded)
+    // console.log('OnImageLoad: ', this.imageLoaded)
   }
 
   displayingArt(){
     // Theoreticaly we can outsource logic for randomArt and selectedArt to artService
-    console.log('Start of displaying Art: ', this.imageLoaded)
-    this.art = this.artService.getArt()
-    this.randomArt = Math.floor((Math.random() * Object.keys(this.art).length))
-    this.selectedArt = this.art[this.randomArt];
-    this.image = `https://www.artic.edu/iiif/2/${this.selectedArt['image_id']}/full/350,/0/default.jpg`
-    console.log('End of displaying Art: ', this.imageLoaded)
+    if(this.httpService.searchTerm.length === 0) {
+     
+      this.art = this.artService.getArt()
+      this.randomArt = Math.floor((Math.random() * Object.keys(this.art).length))
+      this.selectedArt = this.art[this.randomArt];
+      this.image = `https://www.artic.edu/iiif/2/${this.selectedArt['image_id']}/full/350,/0/default.jpg`
+    } else { 
+      this.art = this.artService.getArt()
+      this.choosenArt = this.artService.setChoosenArt()
+      this.selectedArt = this.art[this.choosenArt];
+      this.image = `https://www.artic.edu/iiif/2/${this.selectedArt['image_id']}/full/350,/0/default.jpg`
+      this.choosenArt--
+    }
+
 
   }
   
   getSafeDescription(): SafeHtml {
     const cleanedHtml = this.removeHrefsFromHtml(this.selectedArt['description']);
-    console.log('CleanedHTML: ',cleanedHtml)
+    // console.log('CleanedHTML: ',cleanedHtml)
     if (cleanedHtml === 'null') return this.sanitizer.bypassSecurityTrustHtml('');
     return this.sanitizer.bypassSecurityTrustHtml(cleanedHtml);  }
   

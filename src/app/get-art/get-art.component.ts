@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { HttpService } from '../service/http.service';
+import { ArtService } from '../service/art.service';
 
 @Component({
   selector: 'app-get-art',
@@ -10,13 +11,35 @@ export class GetArtComponent {
 
   @Output() artFetched = new EventEmitter<void>();
 
-constructor( private httpService: HttpService){}
+constructor( private httpService: HttpService, private artService: ArtService){}
 
   onGetArt():void{
-    // next, error and complete are not needed but they would be used here
-    this.httpService.fetchArt().subscribe({
-      next: respnse => this.artFetched.emit()
-    })
+    // First time clicking on Get the art button
+    if (!this.artService.art){
+      console.log('Before http call Art: ', this.artService.art)
+      // next, error and complete are not needed but they would be used here
+      this.httpService.fetchArt().subscribe({
+        next: respnse => {
+          this.artFetched.emit()
+          console.log('After http call Art: ', this.artService.art)
+        }
+      })
+    } else {
+      // Data was already loaded, only display already loaded data
+      this.artFetched.emit()
+    }
+
   }
 
 }
+
+
+
+
+// if(this.artService.art === 'undefined') {
+
+//   this.httpService.fetchArt().subscribe({
+//     next: respnse => this.artFetched.emit()
+//   })
+
+// } 
