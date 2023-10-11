@@ -23,6 +23,8 @@ export class ArtDisplayComponent implements OnInit, OnDestroy{
 
   
   ngOnInit() {
+    console.log('Display art is created')
+
     this.displayingArt();
     this.subscription = this.artService.artChanged.subscribe({
       next: () => {
@@ -34,28 +36,27 @@ export class ArtDisplayComponent implements OnInit, OnDestroy{
   
   ngOnDestroy(){
     this.subscription.unsubscribe();
+    console.log('Display art is destroyed')
   }
 
 
   onImageLoad() {
     this.imageLoaded = true;
-    console.log('OnImageLoad: ', this.imageLoaded)
+    // console.log('OnImageLoad: ', this.imageLoaded)
   }
 
   displayingArt(){
     // Theoreticaly we can outsource logic for randomArt and selectedArt to artService
-    console.log('Start of displaying Art: ', this.imageLoaded)
     this.art = this.artService.getArt()
     this.randomArt = Math.floor((Math.random() * Object.keys(this.art).length))
     this.selectedArt = this.art[this.randomArt];
     this.image = `https://www.artic.edu/iiif/2/${this.selectedArt['image_id']}/full/350,/0/default.jpg`
-    console.log('End of displaying Art: ', this.imageLoaded)
 
   }
   
   getSafeDescription(): SafeHtml {
     const cleanedHtml = this.removeHrefsFromHtml(this.selectedArt['description']);
-    console.log('CleanedHTML: ',cleanedHtml)
+    // console.log('CleanedHTML: ',cleanedHtml)
     if (cleanedHtml === 'null') return this.sanitizer.bypassSecurityTrustHtml('');
     return this.sanitizer.bypassSecurityTrustHtml(cleanedHtml);  }
   

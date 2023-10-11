@@ -8,7 +8,7 @@ export class ArtService {
 
 
   artChanged = new Subject<Data>();
-  private art: Data;
+  art: Data;
 
 
   setArt(art:Data){

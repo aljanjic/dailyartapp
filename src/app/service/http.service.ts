@@ -20,38 +20,15 @@ export class HttpService {
   constructor(private http: HttpClient, private artService: ArtService) { }
 
 
-  // fetchArt(): Observable<Data> {
-  //   this.randomPage = Math.floor((Math.random() * 10))
-  //   if (this.searchTerm.length === 0) {
-  //     this.apiUrl = `${this.apiUrl}/search?q=&page=${this.randomPage}&limit=100&fields=id,artist_title,title,image_id,description`
-  //     return this.http.get<Data>(this.apiUrl).pipe(
-  //       tap(art => {
-  //         console.log(this.apiUrl)
-  //         return this.artService.setFilteredArt(art)
-  //       })
-  //     )
-  //   } else {
-  //     this.apiUrl = `${this.apiUrl}/search?q=${this.searchTerm}&page=1&limit=100&fields=id,artist_title,title,image_id,description`
-  //     return this.http.get<Data>(this.apiUrl).pipe(
-  //       tap(art => {
-  //         console.log(this.apiUrl)
-  //         return this.artService.setArt(art)
-  //       })
-  //     )
-  //   }
-  // }
-
-
   fetchArt(): Observable<Data> {
     this.randomPage = Math.floor((Math.random() * 10))
-    
     this.searchTerm.length === 0 ? 
       this.apiUrl = `${this.apiUrl}/search?q=&page=${this.randomPage}&limit=100&fields=id,artist_title,title,image_id,description` :
       this.apiUrl = `${this.apiUrl}/search?q=${this.searchTerm}&page=1&limit=100&fields=id,artist_title,title,image_id,description`;     
       return this.http.get<Data>(this.apiUrl).pipe(
         tap(art => {
           console.log(this.apiUrl)
-          return this.searchTerm.length ? this.artService.setFilteredArt(art) : this.artService.setArt(art)
+          return this.searchTerm.length === 0 ? this.artService.setFilteredArt(art) : this.artService.setArt(art)
         })
       ) 
   }

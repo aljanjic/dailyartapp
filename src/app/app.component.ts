@@ -29,7 +29,6 @@ import {
 export class AppComponent {
   title = 'dailyartapp';
 
-  subscription: Subscription;
   displayArt: boolean = false;
   displaySearch: boolean = true;
 
