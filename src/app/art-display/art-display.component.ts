@@ -28,6 +28,7 @@ export class ArtDisplayComponent implements OnInit, OnDestroy{
     console.log('Display art is created')
 
     this.displayingArt();
+    // Needed for random art
     this.subscription = this.artService.artChanged.subscribe({
       next: () => {
         this.displayingArt();
@@ -57,13 +58,8 @@ export class ArtDisplayComponent implements OnInit, OnDestroy{
       this.image = `https://www.artic.edu/iiif/2/${this.selectedArt['image_id']}/full/350,/0/default.jpg`
     } else { 
       this.art = this.artService.getArt()
-      console.log('Art: ', this.art)
-      console.log('Befor selecting choosen number: ', this.choosenArt)
-
       this.choosenArt = this.artService.setChoosenArt()
-      console.log('Choosen art number', this.choosenArt)
       this.selectedArt = this.art[this.choosenArt];
-      console.log('Selected Art: ', this.selectedArt)
       this.image = `https://www.artic.edu/iiif/2/${this.selectedArt['image_id']}/full/350,/0/default.jpg`
       this.choosenArt--
     }

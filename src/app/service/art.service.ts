@@ -14,7 +14,7 @@ export class ArtService {
 
 
   setArt(art:Data){
-    const mutatedArt = art['data'].filter((value:Data) => value['image_id'] !== null)
+    const mutatedArt = art['data'].filter((value:Data) => value['image_id'] !== null && value['_score'] > 60)
     this.art = mutatedArt;
     this.artChanged.next({...this.art})
   }
