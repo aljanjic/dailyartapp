@@ -31,13 +31,15 @@ export class AppComponent {
 
   displayArt: boolean = false;
   displaySearch: boolean = true;
-
+  displayMessage: boolean = false;
 
   constructor(){}
 
 
-  onArtFetched() {
-    this.displaySearch = false;
+  onArtFetched(event: number) {
+    if(event === 0) {
+      this.displayMessage = true;
+    } else this.displaySearch = false;
     this.displayArt = false;
     setTimeout(() => {
       this.displayArt = true;

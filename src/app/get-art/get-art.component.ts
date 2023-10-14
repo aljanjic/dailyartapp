@@ -9,7 +9,7 @@ import { ArtService } from '../service/art.service';
 })
 export class GetArtComponent {
 
-  @Output() artFetched = new EventEmitter<void>();
+  @Output() artFetched = new EventEmitter<number>();
 
 constructor( private httpService: HttpService, private artService: ArtService){}
 
@@ -20,7 +20,8 @@ constructor( private httpService: HttpService, private artService: ArtService){}
       // next, error and complete are not needed but they would be used here
       this.httpService.fetchArt().subscribe({
         next: respnse => {
-          this.artFetched.emit()
+          console.log('Response after get art: ', respnse, 'Then art: ',  this.artService.art)
+          this.artFetched.emit(Object.keys(this.artService.art).length)
           console.log('After http call Art: ', this.artService.art)
         }
       })

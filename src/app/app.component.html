@@ -5,13 +5,18 @@
             <app-search-input></app-search-input>
         </div>
 
+        <div *ngIf="displayMessage" [@fadeInOut]>
+            <app-message-display></app-message-display>
+        </div>
+        
         <div *ngIf="displayArt" [@fadeInOut]>
             <app-art-display></app-art-display>
         </div>
         
         <div>
-            <app-get-art (artFetched)="onArtFetched()"></app-get-art>
+            <app-get-art (artFetched)="onArtFetched($event)"></app-get-art>
         </div>
+
 
     </div>
 </div>
