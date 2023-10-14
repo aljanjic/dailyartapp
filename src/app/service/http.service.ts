@@ -14,7 +14,6 @@ export class HttpService {
 
   private apiUrl: string = environment.apiUrl;
   randomPage: number;
-  randomLimit: number;
   searchTerm: string;
 
   constructor(private http: HttpClient, private artService: ArtService) { }
@@ -22,13 +21,14 @@ export class HttpService {
 
   fetchArt(): Observable<Data> {
     this.randomPage = Math.floor((Math.random() * 10))
+    // For multiple APIs different functions below can be called that would process random or searchTerm
     this.searchTerm.length === 0 ? 
       this.apiUrl = `${this.apiUrl}/search?q=&page=${this.randomPage}&limit=100&fields=id,artist_title,title,image_id,description` :
       this.apiUrl = `${this.apiUrl}/search?q=${this.searchTerm}&page=1&limit=100&fields=id,artist_title,title,image_id,description`;     
       return this.http.get<Data>(this.apiUrl).pipe(
         tap(art => {
           console.log(this.apiUrl)
-          return this.searchTerm.length === 0 ? this.artService.setFilteredArt(art) : this.artService.setArt(art)
+          return this.searchTerm.length === 0 ? this.artService.setFilteredArt(art) : this.artService.setArt(art);
         })
       ) 
   }
