@@ -17,6 +17,7 @@ export class SearchInputComponent {
 
   ngDoCheck(){
     this.httpService.searchTerm = this.searchTerm.split(' ').join('');
+    console.log('SearchTerm in httpService: ', this.httpService.searchTerm)
   }
 
 }

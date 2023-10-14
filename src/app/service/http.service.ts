@@ -22,12 +22,18 @@ export class HttpService {
   fetchArt(): Observable<Data> {
     this.randomPage = Math.floor((Math.random() * 10))
     // For multiple APIs different functions below can be called that would process random or searchTerm
+    console.log('Search term Before apiURL set: ',this.searchTerm)
+    let fetchAPI: string;
     this.searchTerm.length === 0 ? 
-      this.apiUrl = `${this.apiUrl}/search?q=&page=${this.randomPage}&limit=100&fields=id,artist_title,title,image_id,description` :
-      this.apiUrl = `${this.apiUrl}/search?q=${this.searchTerm}&page=1&limit=100&fields=id,artist_title,title,image_id,description`;     
-      return this.http.get<Data>(this.apiUrl).pipe(
+      fetchAPI = `${this.apiUrl}/search?q=&page=${this.randomPage}&limit=100&fields=id,artist_title,title,image_id,description` :
+      fetchAPI = `${this.apiUrl}/search?q=${this.searchTerm}&page=1&limit=100&fields=id,artist_title,title,image_id,description`;     
+      console.log('Before Tap: ',fetchAPI)
+
+
+
+      return this.http.get<Data>(fetchAPI).pipe(
         tap(art => {
-          console.log(this.apiUrl)
+          console.log('After Tap: ',fetchAPI)
           return this.searchTerm.length === 0 ? this.artService.setFilteredArt(art) : this.artService.setArt(art);
         })
       ) 

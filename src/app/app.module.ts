@@ -11,13 +11,15 @@ import { GetArtComponent } from './get-art/get-art.component';
 import { ArtDisplayComponent } from './art-display/art-display.component';
 import { SearchInputComponent } from './search-input/search-input.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { MessageDisplayComponent } from './message-display/message-display.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GetArtComponent,
     ArtDisplayComponent,
-    SearchInputComponent
+    SearchInputComponent,
+    MessageDisplayComponent
   ],
   imports: [
     BrowserModule,

@@ -55,13 +55,12 @@ export class ArtDisplayComponent implements OnInit, OnDestroy{
       this.art = this.artService.getArt()
       this.randomArt = Math.floor((Math.random() * Object.keys(this.art).length))
       this.selectedArt = this.art[this.randomArt];
-      this.image = `https://www.artic.edu/iiif/2/${this.selectedArt['image_id']}/full/350,/0/default.jpg`
+      if(this.selectedArt) this.image = `https://www.artic.edu/iiif/2/${this.selectedArt['image_id']}/full/350,/0/default.jpg`
     } else { 
       this.art = this.artService.getArt()
       this.choosenArt = this.artService.setChoosenArt()
       this.selectedArt = this.art[this.choosenArt];
-      this.image = `https://www.artic.edu/iiif/2/${this.selectedArt['image_id']}/full/350,/0/default.jpg`
-      this.choosenArt--
+      if(this.selectedArt) this.image = `https://www.artic.edu/iiif/2/${this.selectedArt['image_id']}/full/350,/0/default.jpg`
     }
 
 
