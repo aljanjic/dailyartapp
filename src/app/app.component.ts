@@ -38,8 +38,15 @@ export class AppComponent {
 
   onArtFetched(event: number) {
     if(event === 0) {
-      this.displayMessage = true;
-    } else this.displaySearch = false;
+      this.displayMessage = false;
+      setTimeout(() => {
+        this.displayMessage = true;
+      }, 500);
+    } else {
+      this.displaySearch = false
+      this.displayMessage = false;
+    };
+    
     this.displayArt = false;
     setTimeout(() => {
       this.displayArt = true;
