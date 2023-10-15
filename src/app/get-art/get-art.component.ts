@@ -19,10 +19,8 @@ constructor( private httpService: HttpService, private artService: ArtService){}
       console.log('Before http call Art: ', this.artService.art)
       // next, error and complete are not needed but they would be used here
       this.httpService.fetchArt().subscribe({
-        next: respnse => {
-          console.log('Response after get art: ', respnse, 'Then art: ',  this.artService.art)
+        next: response => {
           this.artFetched.emit(Object.keys(this.artService.art).length)
-          console.log('After http call Art: ', this.artService.art, typeof(this.artService.art))
         }
       })
     } else {
