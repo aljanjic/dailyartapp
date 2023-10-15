@@ -30,7 +30,7 @@ export class ArtService {
   }
 
   setChoosenArt(){
-    if(this.choosenArt === undefined || this.choosenArt === Object.keys(this.art).length ) this.choosenArt = 0;
+    if(this.choosenArt === undefined || this.choosenArt === Object.keys(this.art).length || Object.keys(this.art).length === 0 ) this.choosenArt = 0;
     return this.choosenArt++;
   }
 

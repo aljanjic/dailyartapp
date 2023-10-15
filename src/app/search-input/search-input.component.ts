@@ -24,7 +24,6 @@ export class SearchInputComponent {
 
 
   onEnter(){
-    console.log('Enter is pressed')
     this.httpService.fetchArt().subscribe({
       next: response => {
         this.enterPressed.emit();
