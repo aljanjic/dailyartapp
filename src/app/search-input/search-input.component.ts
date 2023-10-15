@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
 import { Subject } from 'rxjs';
 import { HttpService } from '../service/http.service';
 
@@ -9,15 +9,31 @@ import { HttpService } from '../service/http.service';
 })
 export class SearchInputComponent {
 
-
-  constructor(private httpService: HttpService){}
+  @Output() enterPressed = new EventEmitter<any>();
+  @ViewChild('inputRef') inputRef: ElementRef;
 
   searchTerm = '';
 
 
+  constructor(private httpService: HttpService){}
+
+  ngAfterViewInit(): void {
+    this.inputRef.nativeElement.focus();
+  }
+
+
+
+  onEnter(){
+    console.log('Enter is pressed')
+    this.httpService.fetchArt().subscribe({
+      next: response => {
+        this.enterPressed.emit();
+      }
+    })
+  }
+
   ngDoCheck(){
     this.httpService.searchTerm = this.searchTerm.split(' ').join('');
-    console.log('SearchTerm in httpService: ', this.httpService.searchTerm)
   }
 
 }
