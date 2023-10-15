@@ -33,11 +33,11 @@ export class AppComponent {
   displaySearch: boolean = true;
   displayMessage: boolean = false;
 
-  constructor(){}
+  constructor(private artService: ArtService){}
 
 
-  onArtFetched(event: number) {
-    if(event === 0) {
+  onArtFetched() {
+    if(Object.keys(this.artService.art).length === 0) {
       this.displayMessage = false;
       setTimeout(() => {
         this.displayMessage = true;

@@ -45,7 +45,6 @@ export class ArtDisplayComponent implements OnInit, OnDestroy{
 
   onImageLoad() {
     this.imageLoaded = true;
-    // console.log('OnImageLoad: ', this.imageLoaded)
   }
 
   displayingArt(){
@@ -68,7 +67,6 @@ export class ArtDisplayComponent implements OnInit, OnDestroy{
   
   getSafeDescription(): SafeHtml {
     const cleanedHtml = this.removeHrefsFromHtml(this.selectedArt['description']);
-    // console.log('CleanedHTML: ',cleanedHtml)
     if (cleanedHtml === 'null') return this.sanitizer.bypassSecurityTrustHtml('');
     return this.sanitizer.bypassSecurityTrustHtml(cleanedHtml);  }
   
