@@ -25,8 +25,6 @@ export class ArtDisplayComponent implements OnInit, OnDestroy{
 
   
   ngOnInit() {
-    console.log('Display art is created')
-
     this.displayingArt();
     // Needed for random art
     this.subscription = this.artService.artChanged.subscribe({
@@ -39,7 +37,6 @@ export class ArtDisplayComponent implements OnInit, OnDestroy{
   
   ngOnDestroy(){
     this.subscription.unsubscribe();
-    console.log('Display art is destroyed')
   }
 
 
