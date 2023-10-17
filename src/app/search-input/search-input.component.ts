@@ -1,5 +1,4 @@
 import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
-import { Subject } from 'rxjs';
 import { HttpService } from '../service/http.service';
 
 @Component({
