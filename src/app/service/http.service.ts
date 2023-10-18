@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Data } from '../interface/data';
-import { Observable, Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { ArtService } from './art.service';
 import { environment } from 'src/enviroments/environment';
