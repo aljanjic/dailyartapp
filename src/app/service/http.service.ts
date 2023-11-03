@@ -4,7 +4,7 @@ import { Data } from '../interface/data';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { ArtService } from './art.service';
-import { environment } from 'src/enviroments/environment';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -23,9 +23,9 @@ export class HttpService {
     this.randomPage = Math.floor((Math.random() * 10))
     // For multiple APIs different functions below can be called that would process random or searchTerm
     let fetchAPI: string;
-    this.searchTerm.length === 0 ? 
+    this.searchTerm.length === 0 ?
       fetchAPI = `${this.apiUrl}/search?q=&page=${this.randomPage}&limit=100&fields=id,artist_title,title,image_id,description` :
-      fetchAPI = `${this.apiUrl}/search?q=${this.searchTerm}&page=1&limit=100&fields=id,artist_title,title,image_id,description`;     
+      fetchAPI = `${this.apiUrl}/search?q=${this.searchTerm}&page=1&limit=100&fields=id,artist_title,title,image_id,description`;
 
 
 
@@ -33,7 +33,7 @@ export class HttpService {
         tap(art => {
           return this.searchTerm.length === 0 ? this.artService.setFilteredArt(art) : this.artService.setArt(art);
         })
-      ) 
+      )
   }
 
 }
