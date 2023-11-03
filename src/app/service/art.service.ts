@@ -10,7 +10,7 @@ export class ArtService {
   artChanged = new Subject<Data>();
   art: Data;
 
-  choosenArt: number;
+  chosenArt: number;
 
 
   setArt(art:Data){
@@ -29,9 +29,9 @@ export class ArtService {
     return {...this.art}
   }
 
-  setChoosenArt(){
-    if(this.choosenArt === undefined || this.choosenArt === Object.keys(this.art).length || Object.keys(this.art).length === 0 ) this.choosenArt = 0;
-    return this.choosenArt++;
+  setChosenArt(){
+    if(this.chosenArt === undefined || this.chosenArt === Object.keys(this.art).length || Object.keys(this.art).length === 0 ) this.chosenArt = 0;
+    return this.chosenArt++;
   }
 
 }
