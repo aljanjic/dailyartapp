@@ -26,7 +26,7 @@ import {
   ]
 })
 export class AppComponent {
-  title = 'dailyartapp';
+  title = 'DailyArtApp';
 
   displayArt: boolean = false;
   displaySearch: boolean = true;
@@ -45,7 +45,7 @@ export class AppComponent {
       this.displaySearch = false
       this.displayMessage = false;
     };
-    
+
     this.displayArt = false;
     setTimeout(() => {
       this.displayArt = true;
