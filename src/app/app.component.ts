@@ -8,7 +8,6 @@ import {
   transition
 } from '@angular/animations';
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -33,7 +32,6 @@ export class AppComponent {
   displayMessage: boolean = false;
 
   constructor(private artService: ArtService){}
-
 
   onArtFetched() {
     if(Object.keys(this.artService.art).length === 0) {

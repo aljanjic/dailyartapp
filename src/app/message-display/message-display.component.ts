@@ -6,5 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./message-display.component.css']
 })
 export class MessageDisplayComponent {
-
 }

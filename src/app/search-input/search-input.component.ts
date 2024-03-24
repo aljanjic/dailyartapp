@@ -13,14 +13,11 @@ export class SearchInputComponent {
 
   searchTerm = '';
 
-
   constructor(private httpService: HttpService){}
 
   ngAfterViewInit(): void {
     this.inputRef.nativeElement.focus();
   }
-
-
 
   onEnter(){
     this.httpService.fetchArt().subscribe({
@@ -33,5 +30,4 @@ export class SearchInputComponent {
   ngDoCheck(){
     this.httpService.searchTerm = this.searchTerm.split(' ').join('');
   }
-
 }

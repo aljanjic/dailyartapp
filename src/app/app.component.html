@@ -1,23 +1,17 @@
 <div class="side">
     <div class="container">
-
         <div *ngIf="displaySearch" [@fadeInOut]>
             <app-search-input (enterPressed)="onArtFetched()"></app-search-input>
         </div>
-
         <div *ngIf="displayMessage" [@fadeInOut]>
             <app-message-display></app-message-display>
         </div>
-
         <div *ngIf="displayArt" [@fadeInOut]>
             <app-art-display></app-art-display>
         </div>
-        
         <div>
             <app-get-art (artFetched)="onArtFetched()"></app-get-art>
         </div>
-
-
     </div>
 </div>
 
