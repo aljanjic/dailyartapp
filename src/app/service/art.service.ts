@@ -6,12 +6,9 @@ import { Data } from '../interface/data';
 })
 export class ArtService {
 
-
   artChanged = new Subject<Data>();
   art: Data;
-
   chosenArt: number;
-
 
   setArt(art:Data){
     const mutatedArt = art['data'].filter((value:Data) => value['image_id'] !== null && value['_score'] > 60)
@@ -33,5 +30,4 @@ export class ArtService {
     if(this.chosenArt === undefined || this.chosenArt === Object.keys(this.art).length || Object.keys(this.art).length === 0 ) this.chosenArt = 0;
     return this.chosenArt++;
   }
-
 }

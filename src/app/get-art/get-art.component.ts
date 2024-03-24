@@ -26,18 +26,5 @@ constructor( private httpService: HttpService, private artService: ArtService){}
       // Data was already loaded, only display already loaded data
       this.artFetched.emit()
     }
-
   }
-
 }
-
-
-
-
-// if(this.artService.art === 'undefined') {
-
-//   this.httpService.fetchArt().subscribe({
-//     next: respnse => this.artFetched.emit()
-//   })
-
-// } 
